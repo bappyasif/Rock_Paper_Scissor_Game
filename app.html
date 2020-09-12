@@ -1,13 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Simple Rock Paper Scissor Game</title>
 </head>
+
 <body>
     <script>
-        // To Do
+        // Game array
+        let rps_array = ["rock", "paper", "scissor"];
+        
+        // Randomly returns either "rock","paper","scissor"
+        function computerPlay() {
+            return rps_array[Math.floor(Math.random() * rps_array.length)]
+        }
+        
+        // Plays a single round of RPS, it will take two parameters
+        // one playerSelection and another computerSelection.
+        // this returns a string declaring winner of this round.
+        // e.g. "You Lose! Paper beats Rock"
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection === rps_array[0]
+                && computerSelection === rps_array[2]) {
+                playerScore++;
+                // return "You Win!! " + playerSelection + " beats " + computerSelection
+                console.log("You Win!! " + playerSelection + " beats " + computerSelection)
+            } else if (playerSelection === rps_array[1]
+                && computerSelection === rps_array[0]) {
+                playerScore++;
+                // return "You Win!! " + playerSelection + " beats " + computerSelection
+                console.log("You Win!! " + playerSelection + " beats " + computerSelection)
+            } else if (playerSelection === rps_array[2]
+                && computerSelection === rps_array[1]) {
+                playerScore++;
+                // return "You Win!! " + playerSelection + " beats " + computerSelection
+                console.log("You Win!! " + playerSelection + " beats " + computerSelection)
+            } else if (playerSelection === computerSelection) {
+                // playerScore++;
+                // return "Game Tied!! " + playerSelection + " equals " + computerSelection
+                console.log("Game Tied!! " + playerSelection + " equals " + computerSelection)
+            } else {
+                computerScore++;
+                // return "You Lose!! " + computerSelection + " beats " + playerSelection;
+                console.log("You Lose!! " + computerSelection + " beats " + playerSelection);
+            }
+        }
+
+        // playing a set of 5 rounds
+        function playGame() {
+            for (let i = 0; i < 5; i++) {
+                let playerMove = prompt("Choose your move from options [rock, paper, scissor]")
+                playRound(playerMove, computerPlay())
+                // console.log(playRound(playerMove, computerPlay()))
+            }
+        }
+
+        // Game Scores
+        let playerScore = 0, computerScore = 0;
+
+        // Who's Winner
+        function checkWinner() {
+            if (playerScore > computerScore) {
+                // console.log("Winner Winner, Chicken Dinner!!")
+                return "Winner Winner, Chicken Dinner!! "+ "playerScore "+playerScore + " Vs "+"computerScore "+computerScore
+            } else if(playerScore === computerScore) {
+                return "Game Tied!! "+ "playerScore "+playerScore + " Vs "+"computerScore "+computerScore
+            } else {
+                // console.log("Try again!!");
+                return "Try again!! "+ "playerScore "+playerScore + " Vs "+"computerScore "+computerScore
+            }
+        }
+
+        playGame();
+        // console.log(playGame());
+        console.log(checkWinner());
     </script>
 </body>
+
 </html>
+
+<!--
+            // Game array
+        let rps_array = ["rock", "paper", "scissor"];
+        // Randomly returns either "rock","paper","scissor"
+        function computerPlay() {
+            return rps_array[Math.floor(Math.random() * rps_array.length)]
+        }
+        // Plays a single round of RPS, it will take two parameters
+        // one playerSelection and another computerSelection.
+        // this returns a string declaring winner of this round.
+        // e.g. "You Lose! Paper beats Rock"
+
+        function playRound(playerSelection, computerSelection) {
+            // if(playerSelection.toLowerCase() === rps_array[0]) {
+            //     if(computerSelection === rps_array[2]) {
+            //         return "You Win!! "+playerSelection+" beats "+computerSelection 
+            //     }
+            // } else if(playerSelection.toLowerCase() === rps_array[1]) {
+            //     if(computerSelection === rps_array[1]) {
+            //         return "You Win!! "+playerSelection+" beats "+computerSelection 
+            //     }
+            // } else if(playerSelection.toLowerCase() === rps_array[2]) {
+            //     if(computerSelection === rps_array[0]) {
+            //         return "You Win!! "+playerSelection+" beats "+computerSelection 
+            //     }
+            // } else {
+            //     return "You Lose!! "+computerSelection+ " beats "+playerSelection;
+            // }
+
+            if (playerSelection === rps_array[0]
+                && computerSelection === rps_array[2]) {
+                playerScore++;
+                // return "You Win!! " + playerSelection + " beats " + computerSelection
+                console.log("You Win!! "+playerSelection+" beats "+computerSelection)
+            } else if (playerSelection === rps_array[1]
+                && computerSelection === rps_array[0]) {
+                playerScore++;
+                // return "You Win!! " + playerSelection + " beats " + computerSelection
+                console.log("You Win!! "+playerSelection+" beats "+computerSelection)
+            } else if (playerSelection === rps_array[2]
+                && computerSelection === rps_array[1]) {
+                playerScore++;
+                // return "You Win!! " + playerSelection + " beats " + computerSelection
+                console.log("You Win!! "+playerSelection+" beats "+computerSelection)
+            } else if (playerSelection === computerSelection) {
+                // playerScore++;
+                // return "Game Tied!! " + playerSelection + " equals " + computerSelection
+                console.log("Game Tied!! "+playerSelection+" equals "+computerSelection)
+            } else {
+                computerScore++;
+                // return "You Lose!! " + computerSelection + " beats " + playerSelection;
+                console.log("You Lose!! "+computerSelection+ " beats "+playerSelection);
+            }
+            // return;
+
+
+            // if(playerSelection === "rock" || "Rock" || "ROCK" 
+            // && computerSelection === "scissor") {
+            //     return "You Win!! "+playerSelection+" beats "+computerSelection
+            // } else if(playerSelection === "scissor" || "Scissor" || "SCISSOR" 
+            // && computerSelection === "paper") {
+            //     return "You Win!! "+playerSelection+" beats "+computerSelection
+            // } else if(playerSelection === "paper" || "Paper" || "PAPER" 
+            // && computerSelection === "rock") {
+            //     return "You Win!! "+playerSelection+" beats "+computerSelection
+            // } else {
+            //     return "You Lose!! "+computerSelection+ " beats "+playerSelection;
+            // }
+        }
+        // let playerMove = prompt("Choose your move from options [rock, paper, scissor]")
+
+        // playing a set of 5 rounds
+        function playGame() {
+            for (let i = 0; i < 5; i++) {
+                let playerMove = prompt("Choose your move from options [rock, paper, scissor]")
+                playRound(playerMove, computerPlay())
+                // console.log(playRound(playerMove, computerPlay()))
+            }
+        }
+
+        // Game Scores
+        let playerScore = 0, computerScore = 0;
+        // console.log(computerPlay());
+        // console.log(playRound(playerMove, computerPlay()));
+        // console.log(playGame());
+        function checkWinner() {
+            if (playerScore > computerScore) {
+                // console.log("Winner Winner, Chicken Dinner!!")
+                return "Winner Winner, Chicken Dinner!!"
+            } else {
+                // console.log("Try again!!");
+                return "Try again!!"
+            }
+        }
+
+        playGame();
+        // console.log(playGame());
+        console.log(checkWinner());
+-->
